@@ -22,15 +22,13 @@ def generate_frame(text):
     """Создает текст с рамкой."""
     lines = text.splitlines()
     max_length = max(len(line) for line in lines)
-    terminal_width = shutil.get_terminal_size().columns
 
-    max_length = min(max_length, terminal_width - FRAME_PADDING * 2 - 2)
 
-    framed_text = f"{FRAME_SYMBOL * (max_length + FRAME_PADDING * 2)}\n"
+    framed_text = f"{FRAME_SYMBOL * (max_length + FRAME_PADDING * 2 + 2)}\n"
     for line in lines:
         centered_line = line.center(max_length)
         framed_text += f"{FRAME_SYMBOL}{' ' * FRAME_PADDING}{centered_line}{' ' * FRAME_PADDING}{FRAME_SYMBOL}\n"
-    framed_text += f"{FRAME_SYMBOL * (max_length + FRAME_PADDING * 2)}"
+    framed_text += f"{FRAME_SYMBOL * (max_length + FRAME_PADDING * 2 + 2)}"
     return framed_text
 
 def colorful_ascii_art(text):
